@@ -1,0 +1,24 @@
+version: '2'
+services:
+  php:
+    build: .
+    command: /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - mysql
+    volumes:
+      - ./www:/var/www
+      - ./sites:/etc/nginx/conf.d
+      - ./logs:/var/log/supervisor
+
+  mysql:
+    image: mysql
+    ports:
+      - "33061:3306"
+      - "3306:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
