@@ -1,4 +1,4 @@
-<?php echo 'Hello World'; ?>
+<?php echo 'Hello NE2W World'; ?>
 
 <?php
   require __DIR__ . '/../app/src/app.php';
